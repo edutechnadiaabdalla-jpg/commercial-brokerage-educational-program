@@ -1,0 +1,1447 @@
+﻿/* انفوجرافيك مراحل سير الطالب */
+.steps-infographic {
+    position: relative;
+    width: 98%;
+    min-height: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*background: #f8fafc;*/
+    border: none;
+    overflow: visible;
+}
+
+/* الصورة الرئيسية في المنتصف */
+.main-center-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 430px; /* تم تصغير الصورة بمقدار الثلث من 650px إلى 430px */
+    height: 344px; /* تم تصغير بمقدار الثلث من 520px إلى 344px */
+    z-index: 100;
+}
+
+/* الصورة الرئيسية2 في المنتصف */
+.center-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 7%;
+    overflow: visible;
+    /*box-shadow: 0 0 0 15px rgba(255, 255, 255, 0.8), 0 20px 60px rgba(74, 107, 255, 0.3);*/
+    /*border: 5px solid #4a6bff;*/
+    /*animation: float 4s ease-in-out infinite;*/
+}
+
+/* للصورة المركزية الكبيرة */
+.main-image {
+    width: 100%;
+    height: 98%;
+    object-fit: contain;
+    object-position: center; /* يركز على منتصف الصورة */
+}
+
+.center-image-wrapper:hover .main-image {
+    transform: scale(1.1);
+}
+/*img+font*/
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /*background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.6) 50%, transparent 100%);*/
+    padding: 2rem 1rem 1.5rem;
+    text-align: center;
+    color: white;
+}
+
+.main-title2 {
+    margin-top:0 !important;
+    font-size: 1.5rem; /* تم تصغير الخط */
+    font-weight: 700;
+    /*margin-bottom: 0.5rem;*/
+    color: #f44336;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.main-subtitle {
+    font-size: 1rem; /* تم تصغير الخط */
+    color: #e0e7ff;
+    font-weight: 500;
+}
+
+/* الحاوية الدائرية للخطوات */
+.steps-circle-wrapper {
+    position: relative;
+    width: 900px;
+    height: 900px;
+    margin: auto;
+    border-radius: 7% !important;
+}
+
+/* كل خطوة في الدائرة */
+.step-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(var(--angle)) translate(400px) rotate(calc(-1 * var(--angle)));
+    z-index: 50;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+    .step-circle:hover {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(400px) rotate(calc(-1 * var(--angle))) scale(1.15);
+        z-index: 60;
+    }
+
+    /* تعديلات خاصة للخطوات 1، 5، 6، 7، 8 لجعلها أقرب */
+    .step-circle[style*="--angle: 0deg"] { /* الخطوة 1 */
+        transform: translate(-50%, -50%) rotate(0deg) translate(320px) rotate(0deg);
+    }
+
+    .step-circle[style*="--angle: 180deg"] { /* الخطوة 5 - أصبحت قريبة مثل الخطوة 4 */
+        transform: translate(-50%, -50%) rotate(180deg) translate(340px) rotate(-180deg);
+    }
+
+    .step-circle[style*="--angle: 225deg"] { /* الخطوة 6 */
+        transform: translate(-50%, -50%) rotate(225deg) translate(340px) rotate(-225deg);
+    }
+
+    .step-circle[style*="--angle: 270deg"] { /* الخطوة 7 */
+        transform: translate(-50%, -50%) rotate(270deg) translate(340px) rotate(-270deg);
+    }
+
+    .step-circle[style*="--angle: 315deg"] { /* الخطوة 8 */
+        transform: translate(-50%, -50%) rotate(315deg) translate(340px) rotate(-315deg);
+    }
+
+    /* تأثير hover للخطوات المعدلة */
+    .step-circle[style*="--angle: 0deg"]:hover {
+        transform: translate(-50%, -50%) rotate(0deg) translate(320px) rotate(0deg) scale(1.15);
+    }
+
+    .step-circle[style*="--angle: 180deg"]:hover {
+        transform: translate(-50%, -50%) rotate(180deg) translate(340px) rotate(-180deg) scale(1.15);
+    }
+
+    .step-circle[style*="--angle: 225deg"]:hover {
+        transform: translate(-50%, -50%) rotate(225deg) translate(340px) rotate(-225deg) scale(1.15);
+    }
+
+    .step-circle[style*="--angle: 270deg"]:hover {
+        transform: translate(-50%, -50%) rotate(270deg) translate(340px) rotate(-270deg) scale(1.15);
+    }
+
+    .step-circle[style*="--angle: 315deg"]:hover {
+        transform: translate(-50%, -50%) rotate(315deg) translate(340px) rotate(-315deg) scale(1.15);
+    }
+
+.step-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    width: 140px;
+    text-align: center;
+}
+
+.step-image-container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    border-radius: 7%;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 0 0 4px white;
+    border: 3px solid #4a6bff;
+    transition: all 0.3s ease;
+}
+
+.step-circle:hover .step-image-container {
+    transform: scale(1.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 0 5px white, 0 0 20px rgba(74, 107, 255, 0.4);
+}
+
+/* صور الخطوات */
+.step-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* إذا أردت رؤية الصورة كاملة بدون قطع */
+.full-image-view {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    padding: 5px; /* مسافة داخلية */
+}
+
+.step-circle:hover .step-img {
+    transform: scale(1.15);
+}
+ /*ترقيم الخطوات*/
+.step-index {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 35px;
+    height: 35px;
+    background: #054e98;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    border: 3px solid white;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.step-circle:hover .step-index {
+    transform: scale(1.2) rotate(10deg);
+    background: #dc3545;
+}
+
+.step-content {
+    /*background: transparent;*/
+    padding: 0.8rem;
+    border: none;
+    /*border-radius: 12px;*/
+    /*box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);*/
+    min-width: 140px;
+    transition: all 0.3s ease;
+}
+
+.step-circle:hover .step-content {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.step-title {
+    font-size: 1rem; /* تم تصغير الخط */
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+}
+
+.step-description {
+    font-size: 0.85rem; /* تم تصغير الخط */
+    color: #6b7280;
+    line-height: 1.3;
+}
+
+/* خطوط التوصيل */
+.connection-lines {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    z-index: 10;
+}
+
+    .connection-lines .line {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 400px;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(74, 107, 255, 0.2) 0%, rgba(74, 107, 255, 0.4) 50%, rgba(74, 107, 255, 0.2) 100%);
+        transform-origin: left center;
+    }
+
+        /* توزيع خطوط التوصيل */
+        .connection-lines .line:nth-child(1) {
+            transform: rotate(0deg);
+        }
+
+        .connection-lines .line:nth-child(2) {
+            transform: rotate(45deg);
+        }
+
+        .connection-lines .line:nth-child(3) {
+            transform: rotate(90deg);
+        }
+
+        .connection-lines .line:nth-child(4) {
+            transform: rotate(135deg);
+        }
+
+        .connection-lines .line:nth-child(5) {
+            transform: rotate(180deg);
+        }
+
+        .connection-lines .line:nth-child(6) {
+            transform: rotate(225deg);
+        }
+
+        .connection-lines .line:nth-child(7) {
+            transform: rotate(270deg);
+        }
+
+        .connection-lines .line:nth-child(8) {
+            transform: rotate(315deg);
+        }
+
+        .connection-lines .line:nth-child(9) {
+            transform: rotate(360deg);
+        }
+
+/* حركة الطفو */
+@keyframes float {
+    0%, 100% {
+        transform: translate(-50%, -50%);
+    }
+
+    50% {
+        transform: translate(-50%, calc(-50% - 10px));
+    }
+}
+
+/* تصميم متجاوب */
+@media (max-width: 1200px) {
+    .steps-circle-wrapper {
+        width: 800px;
+        height: 800px;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(350px) rotate(calc(-1 * var(--angle)));
+    }
+
+        .step-circle:hover {
+            transform: translate(-50%, -50%) rotate(var(--angle)) translate(350px) rotate(calc(-1 * var(--angle))) scale(1.15);
+        }
+
+        /* تعديلات خاصة للخطوات 1، 5، 6، 7، 8 في الميديا المتوسطة */
+        .step-circle[style*="--angle: 0deg"] {
+            transform: translate(-50%, -50%) rotate(0deg) translate(290px) rotate(0deg);
+        }
+
+        .step-circle[style*="--angle: 180deg"] {
+            transform: translate(-50%, -50%) rotate(180deg) translate(300px) rotate(-180deg);
+        }
+
+        .step-circle[style*="--angle: 225deg"] {
+            transform: translate(-50%, -50%) rotate(225deg) translate(300px) rotate(-225deg);
+        }
+
+        .step-circle[style*="--angle: 270deg"] {
+            transform: translate(-50%, -50%) rotate(270deg) translate(300px) rotate(-270deg);
+        }
+
+        .step-circle[style*="--angle: 315deg"] {
+            transform: translate(-50%, -50%) rotate(315deg) translate(300px) rotate(-315deg);
+        }
+
+    .connection-lines {
+        width: 700px;
+        height: 700px;
+    }
+
+        .connection-lines .line {
+            width: 350px;
+        }
+    .main-title2 {
+        margin-top: 0 !important;
+        font-size: 1.3rem; /* تم تصغير الخط */
+    }
+
+    .main-title h1 {
+        font-size: 2rem;
+    }
+    .main-title h2 {
+        font-size:1.75rem;
+    }
+    .video-title {
+        font-size: 2rem !important;
+    }
+
+    }
+
+@media (max-width: 992px) {
+    .steps-infographic {
+        min-height: 120vh;
+    }
+
+    /* تصغير صورة الوسط بمقدار الخمس */
+    .main-center-image {
+        width: 224px; /* 280px - 20% = 224px */
+        height: 224px; /* 280px - 20% = 224px */
+    }
+
+    .main-title h1 {
+        font-size: 1.75rem;
+    }
+
+    .main-title h2 {
+        font-size: 1.5rem;
+    }
+
+    .video-title {
+        font-size: 1.75rem !important;
+    }
+
+    .main-title2 {
+        font-size: 1.4rem; /* تم تصغير الخط */
+    }
+
+    .main-subtitle {
+        font-size: 1rem; /* تم تصغير الخط */
+    }
+
+    .steps-circle-wrapper {
+        width: 700px;
+        height: 700px;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(300px) rotate(calc(-1 * var(--angle)));
+    }
+
+        .step-circle:hover {
+            transform: translate(-50%, -50%) rotate(var(--angle)) translate(300px) rotate(calc(-1 * var(--angle))) scale(1.15);
+        }
+
+        /* تعديلات خاصة للخطوات 1، 5، 6، 7، 8 في الميديا الصغيرة */
+        .step-circle[style*="--angle: 0deg"] {
+            transform: translate(-50%, -50%) rotate(0deg) translate(250px) rotate(0deg);
+        }
+
+        .step-circle[style*="--angle: 180deg"] {
+            transform: translate(-50%, -50%) rotate(180deg) translate(260px) rotate(-180deg);
+        }
+
+        .step-circle[style*="--angle: 225deg"] {
+            transform: translate(-50%, -50%) rotate(225deg) translate(260px) rotate(-225deg);
+        }
+
+        .step-circle[style*="--angle: 270deg"] {
+            transform: translate(-50%, -50%) rotate(270deg) translate(260px) rotate(-270deg);
+        }
+
+        .step-circle[style*="--angle: 315deg"] {
+            transform: translate(-50%, -50%) rotate(315deg) translate(260px) rotate(-315deg);
+        }
+
+    .step-link {
+        width: 120px;
+    }
+
+    .step-image-container {
+        width: 95px;
+        height: 95px;
+    }
+
+    .connection-lines {
+        width: 600px;
+        height: 600px;
+    }
+
+        .connection-lines .line {
+            width: 300px;
+        }
+    .main-title2 {
+        margin-top: 0 !important;
+        font-size: 1.1rem; /* تم تصغير الخط */
+    }
+
+}
+
+@media (max-width: 768px) {
+    .steps-infographic {
+        min-height: 130vh;
+        /*padding: 1.5rem;*/
+    }
+
+    /* تصغير صورة الوسط بمقدار الخمس */
+    .main-center-image {
+        width: 192px; /* 240px - 20% = 192px */
+        height: 192px; /* 240px - 20% = 192px */
+    }
+
+    .image-overlay {
+        padding: 1.5rem 1rem 1rem;
+    }
+
+    .main-title2 {
+        margin-top: 0 !important;
+        font-size: 1.2rem; /* تم تصغير الخط */
+    }
+
+    .main-subtitle {
+        font-size: 0.9rem; /* تم تصغير الخط */
+    }
+
+    .steps-circle-wrapper {
+        width: 600px;
+        height: 600px;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(250px) rotate(calc(-1 * var(--angle)));
+    }
+
+        .step-circle:hover {
+            transform: translate(-50%, -50%) rotate(var(--angle)) translate(250px) rotate(calc(-1 * var(--angle))) scale(1.15);
+        }
+
+        /* تعديلات خاصة للخطوات 1، 5، 6، 7، 8 في الميديا الأصغر */
+        .step-circle[style*="--angle: 0deg"] {
+            transform: translate(-50%, -50%) rotate(0deg) translate(210px) rotate(0deg);
+        }
+
+        .step-circle[style*="--angle: 180deg"] {
+            transform: translate(-50%, -50%) rotate(180deg) translate(220px) rotate(-180deg);
+        }
+
+        .step-circle[style*="--angle: 225deg"] {
+            transform: translate(-50%, -50%) rotate(225deg) translate(220px) rotate(-225deg);
+        }
+
+        .step-circle[style*="--angle: 270deg"] {
+            transform: translate(-50%, -50%) rotate(270deg) translate(220px) rotate(-270deg);
+        }
+
+        .step-circle[style*="--angle: 315deg"] {
+            transform: translate(-50%, -50%) rotate(315deg) translate(220px) rotate(-315deg);
+        }
+
+    .step-link {
+        width: 110px;
+    }
+
+    .step-image-container {
+        width: 85px;
+        height: 85px;
+    }
+
+    .step-index {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        top: -6px;
+        right: -6px;
+    }
+
+    .step-content {
+        padding: 0.6rem;
+        min-width: 120px;
+    }
+
+    .step-title {
+        font-size: 0.95rem; /* تم تصغير الخط */
+    }
+
+    .step-description {
+        font-size: 0.8rem; /* تم تصغير الخط */
+    }
+
+    .connection-lines {
+        width: 500px;
+        height: 500px;
+    }
+
+        .connection-lines .line {
+            width: 250px;
+        }
+
+    .main-title h1 {
+        font-size: 1.5rem;
+    }
+
+    .main-title h2 {
+        font-size: 1.25rem;
+    }
+
+    .video-title {
+        font-size: 1.5rem !important;
+    }
+
+    .main-title2 {
+        margin-top: 0 !important;
+        font-size: 1rem; /* تم تصغير الخط */
+    }
+
+}
+
+.step-content {
+    padding: 0.25rem 0.1rem; /* تم تقليل padding بشكل كبير */
+    min-width: 100px;
+    margin: 0; /* إزالة أي margin */
+}
+
+.step-title {
+    font-size: 1rem; /* تم تصغير الخط */
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0; /* إزالة margin */
+    padding: 0; /* إزالة padding */
+    line-height: 1.2; /* تقليل line-height */
+}
+
+.step-content p {
+    margin: 0 0 0.1rem 0; /* تقليل المسافة بين الفقرات */
+    padding: 0;
+    font-size: 0.8rem; /* تصغير حجم الخط إذا لزم الأمر */
+    color: #666;
+    line-height: 1.1;
+}
+/* إضافة تعديلات للميديا كويريز لضمان التناسق */
+@media (max-width: 1200px) {
+    .video-title.main-title {
+        margin-bottom: 0.5rem !important; /* تقليل مسافة العنوان */
+    }
+
+    .steps-infographic {
+        margin: 0 auto; /* التوسيط */
+        padding-top: 0;
+        width: 100%;
+    }
+
+    .steps-circle-wrapper {
+        width: 800px;
+        height: 800px;
+        margin: 0 auto; /* التوسيط */
+    }
+    /* ... (بقية تنسيقات rotate تبقى كما هي لديك) ... */
+
+        /* الخطوات المعدلة لتكون أقرب */
+        .step-circle[style*="--angle: 0deg"] {
+            transform: translate(-50%, -50%) rotate(0deg) translate(270px) rotate(0deg);
+        }
+
+        .step-circle[style*="--angle: 180deg"] {
+            transform: translate(-50%, -50%) rotate(180deg) translate(280px) rotate(-180deg);
+        }
+
+        .step-circle[style*="--angle: 225deg"] {
+            transform: translate(-50%, -50%) rotate(225deg) translate(280px) rotate(-225deg);
+        }
+
+        .step-circle[style*="--angle: 270deg"] {
+            transform: translate(-50%, -50%) rotate(270deg) translate(280px) rotate(-270deg);
+        }
+
+        .step-circle[style*="--angle: 315deg"] {
+            transform: translate(-50%, -50%) rotate(315deg) translate(280px) rotate(-315deg);
+        }
+
+    /* تقليل المسافة بين الصورة والعنوان داخل كل مربع */
+    .step-link {
+        width: 110px;
+    }
+
+    .step-image-container {
+        width: 90px;
+        height: 90px;
+        margin-bottom: 0.6rem; /* تقليل المسافة من 1rem إلى 0.6rem */
+    }
+
+}
+
+@media (max-width: 992px) {
+    .video-title.main-title {
+        margin-bottom: 0 !important;
+    }
+
+    .steps-infographic {
+        margin: 0 auto;
+        padding-top: 0;
+        min-height: auto; /* منع الفراغات الزائدة */
+    }
+
+    .steps-circle-wrapper {
+        width: 650px;
+        height: 650px;
+        margin: 0 auto;
+    }
+    /* جعل الخطوات أقرب للمركز */
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(280px) rotate(calc(-1 * var(--angle)));
+    }
+
+        .step-circle[style*="--angle: 0deg"] {
+            transform: translate(-50%, -50%) rotate(0deg) translate(230px) rotate(0deg);
+        }
+
+        .step-circle[style*="--angle: 180deg"] {
+            transform: translate(-50%, -50%) rotate(180deg) translate(240px) rotate(-180deg);
+        }
+
+        .step-circle[style*="--angle: 225deg"] {
+            transform: translate(-50%, -50%) rotate(225deg) translate(240px) rotate(-225deg);
+        }
+
+        .step-circle[style*="--angle: 270deg"] {
+            transform: translate(-50%, -50%) rotate(270deg) translate(240px) rotate(-270deg);
+        }
+
+        .step-circle[style*="--angle: 315deg"] {
+            transform: translate(-50%, -50%) rotate(315deg) translate(240px) rotate(-315deg);
+        }
+
+    .step-link {
+        width: 100px;
+    }
+
+    .step-image-container {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 0.5rem; /* تقليل أكثر */
+    }
+}
+
+@media (max-width: 768px) {
+    .video-title.main-title {
+        font-size: 1.5rem;
+        margin-bottom: -20px !important; /* سحب الانفوجرافيك للأعلى قليلاً */
+    }
+
+    .steps-infographic {
+        margin: 0 auto;
+        padding: 0;
+        transform: scale(0.9); /* تصغير بسيط ليناسب الشاشة */
+    }
+
+    .steps-circle-wrapper {
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(210px) rotate(calc(-1 * var(--angle)));
+    }
+
+        .step-circle[style*="--angle: 0deg"] {
+            transform: translate(-50%, -50%) rotate(0deg) translate(190px) rotate(0deg);
+        }
+
+        .step-circle[style*="--angle: 180deg"] {
+            transform: translate(-50%, -50%) rotate(180deg) translate(200px) rotate(-180deg);
+        }
+
+        .step-circle[style*="--angle: 225deg"] {
+            transform: translate(-50%, -50%) rotate(225deg) translate(200px) rotate(-225deg);
+        }
+
+        .step-circle[style*="--angle: 270deg"] {
+            transform: translate(-50%, -50%) rotate(270deg) translate(200px) rotate(-270deg);
+        }
+
+        .step-circle[style*="--angle: 315deg"] {
+            transform: translate(-50%, -50%) rotate(315deg) translate(200px) rotate(-315deg);
+        }
+
+    .step-link {
+        width: 90px;
+    }
+
+    .step-image-container {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 0.4rem; /* تقليل أكثر */
+        margin-left: 0.3rem; /* تقليل المسافة من 1rem إلى 0.6rem */
+        margin-right: 0.3rem; /* تقليل المسافة من 1rem إلى 0.6rem */
+    }
+}
+
+@media (max-width: 576px) {
+    .video-title.main-title {
+        font-size: 1.2rem;
+        margin-bottom: -40px !important; /* تقليل المسافة جداً في الجوال */
+    }
+
+    .steps-infographic {
+        margin: 0 auto;
+        transform: scale(0.75); /* تصغير الانفوجرافيك ليظهر كاملاً */
+        margin-top: -50px; /* إلغاء الفراغ العلوي */
+    }
+
+    .steps-circle-wrapper {
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(170px) rotate(calc(-1 * var(--angle)));
+    }
+    /* توسيط أيقونات الخطوات */
+    .step-link {
+        width: 80px;
+    }
+
+    .step-image-container {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+        .step-circle[style*="--angle: 0deg"] {
+            transform: translate(-50%, -50%) rotate(0deg) translate(150px) rotate(0deg);
+        }
+
+        .step-circle[style*="--angle: 180deg"] {
+            transform: translate(-50%, -50%) rotate(180deg) translate(160px) rotate(-180deg);
+        }
+
+        .step-circle[style*="--angle: 225deg"] {
+            transform: translate(-50%, -50%) rotate(225deg) translate(160px) rotate(-225deg);
+        }
+
+        .step-circle[style*="--angle: 270deg"] {
+            transform: translate(-50%, -50%) rotate(270deg) translate(160px) rotate(-270deg);
+        }
+
+        .step-circle[style*="--angle: 315deg"] {
+            transform: translate(-50%, -50%) rotate(315deg) translate(160px) rotate(-315deg);
+        }
+
+    .step-link {
+        width: 80px;
+    }
+
+    .step-image-container {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 0.3rem; /* أقل مسافة */
+        margin-left: 0.9rem !important; /* تقليل المسافة من 1rem إلى 0.6rem */
+    }
+}
+
+
+/* تقليل حجم الخطوط أيضاً في الميديا لتناسب المسافات الجديدة */
+@media (max-width: 1200px) {
+    .step-title {
+        font-size: 0.9rem;
+        line-height: 1.1;
+    }
+
+    .step-description {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .step-title {
+        font-size: 0.85rem;
+        line-height: 1.05;
+    }
+
+    .step-description {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .step-title {
+        font-size: 0.8rem;
+        line-height: 1;
+    }
+
+    .step-description {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .steps-infographic {
+    margin-left:2.5rem;
+    }
+        .step-title {
+        font-size: 0.75rem;
+        line-height: 0.95;
+    }
+
+    .step-description {
+        font-size: 0.6rem;
+    }
+    .main-title h1 {
+        font-size: 1.3rem !important;
+    }
+
+    .main-title h2 {
+        font-size: 1.1rem !important;
+    }
+    .video-title {
+        font-size: 1.3rem !important;
+    }
+    }
+
+/* باستخدام margin للتوسيط */
+@media (max-width: 1200px) {
+    .steps-infographic {
+        margin: 2rem 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .steps-infographic {
+        margin: 2rem 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .steps-infographic {
+        margin: 2rem 2rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .steps-infographic {
+        margin: 0.75rem 0.75rem;
+    }
+}
+
+/* --- 1. تنسيقات التوسيط وتقليل المسافات (الميديا كويريز الناجحة) --- */
+
+@media (max-width: 1200px) {
+    .video-title.main-title {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .steps-infographic {
+        margin: 0 auto;
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .steps-circle-wrapper {
+        width: 800px;
+        height: 800px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .video-title.main-title {
+        margin-bottom: 0 !important;
+    }
+
+    .steps-infographic {
+        margin: 0 auto;
+        padding-top: 0;
+        min-height: auto;
+    }
+
+    .steps-circle-wrapper {
+        width: 650px;
+        height: 650px;
+        margin: 0 auto;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(280px) rotate(calc(-1 * var(--angle)));
+    }
+}
+
+@media (max-width: 768px) {
+    .video-title.main-title {
+        font-size: 1.5rem;
+        margin-bottom: -20px !important;
+    }
+
+    .steps-infographic {
+        margin: 0 auto;
+        transform: scale(0.9);
+    }
+
+    .steps-circle-wrapper {
+        width: 500px;
+        height: 500px;
+        margin: 0 auto;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(210px) rotate(calc(-1 * var(--angle)));
+    }
+}
+
+@media (max-width: 576px) {
+    .video-title.main-title {
+        font-size: 1.2rem;
+        margin-bottom: -40px !important;
+    }
+
+    .steps-infographic {
+        margin: 0 auto;
+        transform: scale(0.75);
+        margin-top: -50px;
+    }
+
+    .steps-circle-wrapper {
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(170px) rotate(calc(-1 * var(--angle)));
+    }
+
+    .step-link {
+        width: 80px;
+    }
+
+    .step-image-container {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
+/* --- 2. كود الحركة عند التمرير (إضافة فقط دون تعديل الأماكن) --- */
+
+/* إخفاء العناصر قبل بدء الحركة */
+.step-circle, .connection-lines .line {
+    opacity: 0;
+}
+
+/* تفعيل الحركات عندما يضيف الجافا سكريبت كلاس active */
+.video-section.active .steps-circle-wrapper {
+    animation: fadeInScale 1s ease-out forwards;
+}
+
+.video-section.active .step-circle {
+    animation: fadeInStep 0.8s ease-out forwards;
+}
+
+.video-section.active .connection-lines .line {
+    animation: fadeInLines 1.5s ease-in-out forwards;
+    animation-delay: 1.8s;
+}
+
+/* توقيت ظهور كل خطوة بالترتيب */
+.video-section.active .step-circle:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.video-section.active .step-circle:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.video-section.active .step-circle:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.video-section.active .step-circle:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.video-section.active .step-circle:nth-child(5) {
+    animation-delay: 1.0s;
+}
+
+.video-section.active .step-circle:nth-child(6) {
+    animation-delay: 1.2s;
+}
+
+.video-section.active .step-circle:nth-child(7) {
+    animation-delay: 1.4s;
+}
+
+.video-section.active .step-circle:nth-child(8) {
+    animation-delay: 1.6s;
+}
+
+/* تعريف الانيميشن */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInStep {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -40%);
+    }
+    /* حركة بسيطة للأعلى */
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInLines {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.4;
+    }
+}
+
+@media (max-width: 576px) {
+    .steps-infographic {
+        margin: 1rem auto;
+        padding: 1rem 0;
+        transform: none; /* مهم جدًا: أوقف أي scale */
+    }
+
+    .steps-circle-wrapper {
+        width: 320px !important;
+        height: 320px !important;
+        margin: 2rem auto !important;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(120px) rotate(calc(-1 * var(--angle))) !important;
+    }
+
+        /* اجبر كل الزوايا على نفس القيمة الصغيرة */
+        .step-circle[style*="--angle: 0deg"],
+        .step-circle[style*="--angle: 180deg"],
+        .step-circle[style*="--angle: 225deg"],
+        .step-circle[style*="--angle: 270deg"],
+        .step-circle[style*="--angle: 315deg"] {
+            transform: translate(-50%, -50%) rotate(var(--angle)) translate(120px) rotate(calc(-1 * var(--angle))) !important;
+        }
+
+    .connection-lines {
+        width: 240px !important;
+        height: 240px !important;
+    }
+
+        .connection-lines .line {
+            width: 120px !important;
+        }
+
+    .step-image-container {
+        width: 65px;
+        height: 65px;
+    }
+
+    .step-link {
+        width: 90px;
+    }
+}
+.steps-circle-wrapper {
+    overflow: visible !important; /* يحسن الأداء ويمنع بعض مشاكل الـ overflow */
+    will-change: transform;
+}
+
+.step-circle {
+    will-change: transform;
+    backface-visibility: hidden; /* يصلح بعض مشاكل الاختفاء في بعض المتصفحات */
+}
+
+/* ──────────────────────────────────────────────
+   تعديلات للحفاظ على الشكل الدائري مع التوافق مع الجوال
+───────────────────────────────────────────────── */
+
+/* القيم الأساسية (للشاشات الكبيرة) تبقى كما هي */
+
+/* شاشات متوسطة (لابتوب/تابلت) */
+@media (max-width: 1024px) {
+    .steps-circle-wrapper {
+        width: 680px;
+        height: 680px;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(280px) rotate(calc(-1 * var(--angle)));
+    }
+
+    .connection-lines {
+        width: 560px;
+        height: 560px;
+    }
+
+        .connection-lines .line {
+            width: 280px;
+        }
+
+   .h2 .main-title {
+        font-size: 1.75rem !important;
+    }
+}
+
+/* شاشات أصغر (تابلت صغير / جوال كبير) */
+@media (max-width: 768px) {
+    .steps-infographic {
+        padding: 1rem 0.5rem;
+    }
+
+    .steps-circle-wrapper {
+        width: 520px;
+        height: 520px;
+        margin: 1.5rem auto;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(220px) rotate(calc(-1 * var(--angle)));
+    }
+        /* اجبر القيم الخاصة على التعديل */
+        .step-circle[style*="--angle: 0deg"],
+        .step-circle[style*="--angle: 180deg"],
+        .step-circle[style*="--angle: 225deg"],
+        .step-circle[style*="--angle: 270deg"],
+        .step-circle[style*="--angle: 315deg"] {
+            transform: translate(-50%, -50%) rotate(var(--angle)) translate(220px) rotate(calc(-1 * var(--angle)));
+        }
+
+    .connection-lines {
+        width: 440px;
+        height: 440px;
+    }
+
+        .connection-lines .line {
+            width: 220px;
+        }
+
+    .step-image-container {
+        width: 80px;
+        height: 80px;
+    }
+
+    .step-link {
+        width: 110px;
+    }
+ .h2 .main-title {
+        font-size: 1.5rem !important;
+    }
+
+}
+
+/* الجوال (أهم جزء - الحفاظ على الدائرة مع تصغير النصف قطر) */
+@media (max-width: 576px) {
+    .steps-infographic {
+        margin: 1rem auto;
+        padding: 0.8rem;
+        /* لا نستخدم scale هنا لأنه يفسد النقر أحيانًا */
+    }
+
+    .main-center-image {
+        width: 220px;
+        height: auto;
+        margin: 1rem auto 1.5rem;
+    }
+
+    .steps-circle-wrapper {
+        width: 380px !important;
+        height: 380px !important;
+        margin: 1.5rem auto !important;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(150px) rotate(calc(-1 * var(--angle))) !important;
+    }
+
+        /* اجبر كل الزوايا على نفس القيمة للتوافق */
+        .step-circle[style*="--angle: 0deg"],
+        .step-circle[style*="--angle: 180deg"],
+        .step-circle[style*="--angle: 225deg"],
+        .step-circle[style*="--angle: 270deg"],
+        .step-circle[style*="--angle: 315deg"] {
+            transform: translate(-50%, -50%) rotate(var(--angle)) translate(150px) rotate(calc(-1 * var(--angle))) !important;
+        }
+
+    .connection-lines {
+        width: 300px !important;
+        height: 300px !important;
+    }
+
+        .connection-lines .line {
+            width: 150px !important;
+        }
+
+    .step-image-container {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 0.5rem;
+    }
+
+    .step-index {
+        width: 28px;
+        height: 28px;
+        font-size: 0.75rem;
+        top: -6px;
+        right: -6px;
+    }
+
+    .step-title {
+        font-size: 0.65rem;
+        line-height: 1.1;
+    }
+
+    .step-content p {
+        font-size: 0.5rem;
+    }
+    .h2 .main-title {
+        font-size: 1.25rem !important;
+    }
+
+}
+
+/* جوال صغير جدًا (مثل iPhone SE أو أجهزة قديمة) */
+@media (max-width: 380px) {
+    .steps-circle-wrapper {
+        width: 320px !important;
+        height: 320px !important;
+    }
+
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(125px) rotate(calc(-1 * var(--angle))) !important;
+    }
+
+    .connection-lines {
+        width: 250px !important;
+        height: 250px !important;
+    }
+
+        .connection-lines .line {
+            width: 125px !important;
+        }
+
+    .step-image-container {
+        width: 60px;
+        height: 60px;
+    }
+    .h2 .main-title {
+        font-size: 1rem !important;
+    }
+
+}
+
+.steps-infographic {
+    /*overflow: visible;*/
+    padding: 1rem; /* أو 0.8rem في الجوال */
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+@media (max-width: 576px) {
+    .steps-infographic {
+        padding: 0.6rem 0.4rem;
+    }
+}
+
+.step-circle {
+    overflow: visible;
+    overflow: visible !important; /* يحسن الأداء والرسم */
+}
+
+.steps-infographic,
+.steps-circle-wrapper {
+    overflow: visible;
+    /* contain: paint;   ← علّقها أو احذفها إذا كانت تسبب مشكلة */
+}
+
+.step-circle {
+    overflow: visible;
+    /* contain: paint;   ← نفس الشيء */
+    will-change: transform; /* يساعد في سلاسة التحريك */
+    backface-visibility: hidden; /* يصلح بعض مشاكل الـ flickering */
+}
+
+/* ────────────────────────────────
+   الشاشات الكبيرة (default)
+───────────────────────────────── */
+:root {
+    --infographic-scale: 1;
+    --radius-main: 400px;
+    --radius-close: 340px;
+}
+
+@media (max-width: 1200px) {
+    :root {
+        --radius-main: 350px;
+        --radius-close: 300px;
+    }
+}
+
+@media (max-width: 992px) {
+    :root {
+        --radius-main: 300px;
+        --radius-close: 260px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --radius-main: 240px;
+        --radius-close: 210px;
+    }
+
+    .steps-infographic {
+        padding: 1rem 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    :root {
+        --radius-main: 200px; /* النصف قطر العام */
+        --radius-close: 170px; /* الخطوات 1,5,6,7,8 */
+    }
+
+    .step-circle {
+        --radius: var(--radius-main);
+    }
+
+        /* نجبر الخطوات القريبة على قيمة أصغر */
+        .step-circle[data-step="1"],
+        .step-circle[data-step="5"],
+        .step-circle[data-step="6"],
+        .step-circle[data-step="7"],
+        .step-circle[data-step="8"] {
+            --radius: var(--radius-close);
+        }
+
+    .connection-lines {
+        width: calc(var(--radius-main) * 2);
+        height: calc(var(--radius-main) * 2);
+    }
+
+        .connection-lines .line {
+            width: var(--radius-main);
+        }
+
+    /* منع أي scale يفسد التفاعل */
+    .steps-infographic {
+        transform: none !important;
+    }
+}
+
+/* ────────────────────────────────
+   جوال صغير جداً (< 380–400px)
+───────────────────────────────── */
+@media (max-width: 400px) {
+    :root {
+        --radius-main: 170px;
+        --radius-close: 140px;
+    }
+}
+@media (max-width: 576px) {
+    /* الخطوة 4 → عادة --angle: 135deg أو 90deg حسب ترتيبك */
+    .step-circle[style*="--angle: 135deg"],
+    .step-circle[style*="--angle: 90deg"] { /* اضبط الزاوية حسب كودك الفعلي */
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(180px) rotate(calc(-1 * var(--angle))) !important;
+    }
+
+    /* الخطوة 6 → عادة --angle: 225deg */
+    .step-circle[style*="--angle: 225deg"] {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(180px) rotate(calc(-1 * var(--angle))) !important;
+    }
+
+    /* لو كانت باقي الخطوات أقرب، اجعلها أبعد شوية */
+    .step-circle {
+        transform: translate(-50%, -50%) rotate(var(--angle)) translate(170px) rotate(calc(-1 * var(--angle))) !important;
+    }
+}

@@ -1,0 +1,796 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcomepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="wwwroot/css/ahlan.css" />
+    <link rel="stylesheet" href="wwwroot/css/infograficc.css" />
+    <link rel="stylesheet" href="wwwroot/css/studentcard.css" />
+
+    <style>
+        /* كل أنماط CSS الداخلية هنا كما هي */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nonindex {
+            z-index: 0 !important;
+        }
+
+        /* التصميم للعناوين الرئيسية (بالمنتصف) */
+        .main-title {
+            text-align: center;
+            margin: 25px 0 25px;
+            padding-bottom: 15px;
+            position: relative;
+            font: bold;
+            /* color: #2c3e50; */
+        }
+
+            .main-title h1 {
+                font-family: Arial;
+                font-size: 2.5rem;
+                font: bold !important;
+                margin-bottom: 10px;
+                color: turquoise;
+            }
+
+
+            .main-title h2 {
+                font-family: Arial;
+                font-size: 2.1rem;
+                font: bold !important;
+                color: rgba(28, 37, 38, 0.8) !important;
+            }
+
+            .main-title::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 50%;
+                transform: translateX(50%);
+                width: 100px;
+                height: 5px;
+                background: linear-gradient(to right, #033957, darkturquoise, mediumturquoise);
+                border-radius: 2px;
+                font: bold;
+            }
+            /* أضف هذه الألوان إلى CSS */
+            .main-title.primary-line::after {
+                background: linear-gradient(to right, #0dcaf0, #20c997); /* أزرق-أخضر */
+            }
+
+            .main-title.secondary-line::after {
+                background: linear-gradient(to right, #6f42c1, #d63384); /* بنفسجي-وردي */
+            }
+
+            .main-title.success-line::after {
+                background: linear-gradient(to right, #198754, #20c997); /* أخضر */
+            }
+
+            .main-title.warning-line::after {
+                background: linear-gradient(to right, #ffc107, #fd7e14); /* أصفر-برتقالي */
+            }
+
+            .main-title.danger-line::after {
+                background: linear-gradient(to right, #dc3545, #bb2d3b); /* أحمر */
+            }
+
+            .main-title.info-line::after {
+                background: linear-gradient(to right, #054e98,#033957, mediumblue); /* أزرق فاتح */
+            }
+
+            .main-title.dark-line::after {
+                background: linear-gradient(to right, #212529, #495057); /* رمادي غامق */
+            }
+
+            .main-title.light-line::after {
+                background: linear-gradient(to right, #f8f9fa, #e9ecef); /* فاتح جداً */
+            }
+
+        /* قسم الفيديو */
+        .video-section {
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .video-title {
+            text-align: center;
+            margin-bottom: 25px;
+            color: mediumblue;
+            font-size: 2rem;
+            font: bold !important;
+        }
+
+        .video-container {
+            max-width: 350px; /* تحديد عرض أقصى يناسب شكل الموبايل على اللابتوب */
+            width: 90%; /* ليصغر تلقائياً على الشاشات الصغيرة جداً */
+            margin: 20px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            background-color: #000;
+            /* الحفاظ على أبعاد الفيديو الطولية */
+            aspect-ratio: 9 / 16;
+        }
+
+            .video-container video {
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover; /* لضمان ملء الفيديو للحاوية بدون تشويه */
+            }
+
+        .video-placeholder {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #1a5276 0%, #3498db 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+
+            .video-placeholder i {
+                font-size: 80px;
+                margin-bottom: 20px;
+                opacity: 0.9;
+            }
+
+            .video-placeholder p {
+                font-size: 1.3rem;
+                max-width: 80%;
+                text-align: center;
+            }
+
+        .sub-controls {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .sub-btn {
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+            .sub-btn.active {
+                background: #0056b3;
+            }
+
+        /* انفوجرافيك المراحل */
+        .infographic-section {
+            margin: 70px 0;
+        }
+
+        .stages-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            min-height: 600px;
+        }
+
+        /* الخط العمودي المركزي */
+        .timeline-line {
+            position: absolute;
+            right: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #1a5276, #3498db);
+            transform: translateX(50%);
+            z-index: 1;
+        }
+
+        /* مراحل سير الطالب */
+        .stage {
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+            .stage.right {
+                justify-content: flex-end;
+            }
+
+        .stage-content {
+            width: 45%;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            position: relative;
+            text-align: center;
+        }
+
+        .stage.right .stage-content {
+            background-color: #f0f7ff;
+        }
+
+        .stage.left .stage-content {
+            background-color: #fff9f0;
+        }
+
+        .stage-number {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            font-family: Arial, sans-serif;
+        }
+
+        .stage.left .stage-number {
+            right: -75px;
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+        }
+
+        .stage.right .stage-number {
+            left: -75px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+
+        .stage-title {
+            font-size: 1.4rem;
+            font: bold;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: center !important;
+            padding-right: 10px;
+        }
+
+            /* التعديل: تقليل المسافة بين الأيقونة والنص في عناوين المراحل */
+            .stage-title i {
+                text-align: right !important;
+                font-size: 1.1rem;
+                font: bold;
+                order: 2; /* يجعل الأيقونة تأتي أولاً (على اليمين) */
+            }
+
+        .stage-title-text {
+            order: 1; /* يجعل النص يأتي بعد الأيقونة */
+            font-size: 1.4rem;
+            font: bold;
+            direction: rtl;
+            text-align: center !important;
+            width: 100%;
+        }
+
+        .stage-content p {
+            text-align: center !important;
+            margin-bottom: 10px;
+            font-size: 1.05rem;
+        }
+
+        .steps {
+            margin-top: 15px;
+            text-align: center !important;
+        }
+
+        .step {
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-right: 4px solid #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+            /* الأيقونات في الخطوات على اليمين */
+            .step i {
+                order: 2; /* الأيقونة أولاً على اليمين */
+                display: flex;
+                flex-direction: row-reverse; /* الأيقونة أقصى اليمين */
+                justify-content: right;
+                text-align: right;
+                gap: 4px !important; /* تقليص المسافة بين الأيقونة والنص */
+                color: #3498db;
+                margin-right: 0;
+                margin-left: 7px !important;
+            }
+
+        i.fas .fa-file-alt {
+            order: 1; /* الأيقونة أولاً على اليمين */
+            display: flex;
+            flex-direction: row-reverse; /* الأيقونة أقصى اليمين */
+            justify-content: right;
+            text-align: right;
+            gap: 4px !important; /* تقليص المسافة بين الأيقونة والنص */
+            color: #3498db;
+            margin-right: 0;
+            margin-left: 7px !important;
+        }
+
+        .step-text {
+            order: 2; /* النص بعد الأيقونة */
+            text-align: right;
+            width: 100%;
+        }
+
+        /* قسم دليل الطالب */
+        .guide-section {
+            text-align: center !important;
+            margin: 80px 0 100px !important;
+        }
+
+        .guide-btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            padding: 18px 45px !important;
+            background: #054e98 !important;
+            color: white !important;
+            font-size: 1.4rem !important;
+            font-weight: 600 !important;
+            border-radius: 50px !important;
+            text-decoration: none !important;
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3) !important;
+            transition: all 0.3s ease !important;
+            position: relative !important;
+            justify-content: center !important;
+        }
+
+            .guide-btn:hover {
+                transform: translateY(-5px) !important;
+                box-shadow: 0 12px 25px rgba(52, 152, 219, 0.4) !important;
+                color: white !important;
+                background: #3498db !important;
+            }
+
+            /* أيقونة دليل الطالب على اليمين */
+            .guide-btn i !important {
+                margin-left: 12px !important;
+                margin-right: 0 !important;
+                order: 2 !important; /* الأيقونة أولاً على اليمين */
+            }
+
+        .guide-btn-text {
+            order: 1 !important; /* النص بعد الأيقونة */
+        }
+
+        .arrow-down {
+            display: block !important;
+            margin: 25px auto 0 !important;
+            font-size: 2rem !important;
+            color: #0084bb !important;
+            animation: bounce 2s infinite !important;
+            cursor: pointer !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container nonindex">
+        <!-- العناوين الرئيسية -->
+        <div class="main-title">
+            <h1>اهلا بك</h1>
+            <h2>عزيزي الطالب في برنامج</h2>
+            <h2>مهارات أعمال الوساطة التجارية</h2>
+        </div>
+
+        <div class="video-section">
+            <h2 class="video-title" style="font:bold !important;">فيديو إرشادي <br /> لكيفية تجوالك في البرنامج</h2>
+            <div class="video-container">
+                <!-- استبدال هذا العنصر بالفيديو الفعلي -->
+                <video id="mainVideo" controls
+                       width="100%">
+                    <source src="wwwroot/video/video1.mp4" type="video/mp4">
+                </video>
+
+            </div>
+
+            <div class="video-section">
+                <h2 class="video-title main-title" style="margin-bottom: 0.6rem !important; text-align: center;">
+                    إنفوجرافيك إرشادي <br /> لخطوات تجوالك في البرنامج
+                </h2>
+                <br />
+                <!-- انفوجرافيك مراحل سير الطالب -->
+                <div class="steps-infographic">
+
+                    <!-- الصورة الرئيسية بالمنتصف -->
+                    <div class="main-center-image">
+                        <div class="center-image-wrapper">
+                            <img src="wwwroot/images2/1.png"
+                                 alt="البرنامج التعليمي الرئيسي"
+                                 class="main-image">
+                            <div class="image-overlay">
+
+                            </div>
+                        </div>
+                        <h2 class="main-title2">البرنامج التعليمي 8 خطوات</h2>
+
+                    </div>
+
+                    <!-- الخطوات المحيطة بشكل دائري -->
+                    <div class="steps-circle-wrapper">
+
+                        <!-- الخطوة 1 - الآن في الأعلى -->
+                        <div class="step-circle" style="--angle: 270deg;">
+                            <a href="/Identity/Exams/mokhaterhazer" class="step-link">
+                                <div class="step-image-container" style="border:1px solid red !important;">
+                                    <img src="wwwroot/images2/3.png"
+                                         class="step-img">
+                                    <span class="step-index">1</span>
+                                </div>
+                                <div class="step-content">
+                                    <p>الخطوة الأولى</p>
+                                    <h3 class="step-title">مقياس الأسلوب المعرفي</h3>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- الخطوة 2 - الآن في أعلى اليسار -->
+                        <div class="step-circle" style="--angle: 315deg">
+                            <a href="/Identity/Exams/pretest" class="step-link">
+                                <div class="step-image-container" style="border:1px solid #1a237e !important;">
+                                    <img src="wwwroot/images2/2.png"
+                                         class="step-img">
+                                    <span class="step-index">2</span>
+                                </div>
+                                <div class="step-content">
+                                    <p>الخطوة الثانية</p>
+                                    <h3 class="step-title">اختبار المواقف (القبلي)</h3>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- الخطوة 3 - الآن في اليسار -->
+                        <div class="step-circle" style="--angle: 0deg">
+                            <a href="/Identity/mymainitems/beaa1" class="step-link">
+                                <div class="step-image-container" style="border:1px solid red !important;">
+                                    <img src="wwwroot/images2/5.png"
+                                         class="step-img">
+                                    <span class="step-index">3</span>
+                                </div>
+                                <div class="step-content">
+                                    <p>الخطوة الثالثة</p>
+                                    <h3 class="step-title">موضوع وكيل البيع</h3>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- الخطوة 4 - الآن في أسفل اليسار -->
+                        <div class="step-circle" style="--angle: 45deg">
+                            <a href="/Identity/mymainitems/b_moazeen2" class="step-link">
+                                <div class="step-image-container" style="border:1px solid red !important;">
+                                    <img src="wwwroot/images2/5.png"
+                                         class="step-img">
+                                    <span class="step-index">4</span>
+                                </div>
+                                <div class="step-content">
+                                    <p>الخطوة الرابعة</p>
+                                    <h3 class="step-title">موضوع الموزعين</h3>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- الخطوة 5 - الآن في الأسفل -->
+                        <div class="step-circle" style="--angle: 90deg">
+                            <a href="/Identity/mymainitems/b-tagergomla3" class="step-link">
+                                <div class="step-image-container" style="border:1px solid red !important;">
+                                    <img src="wwwroot/images2/5.png"
+                                         class="step-img">
+                                    <span class="step-index">5</span>
+                                </div>
+                                <div class="step-content">
+                                    <p>الخطوة الخامسة</p>
+                                    <h3 class="step-title">موضوع تاجر الجملة</h3>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- الخطوة 6 - الآن في أسفل اليمين -->
+                        <div class="step-circle" style="--angle: 135deg">
+                            <a href="/Identity/mymainitems/b-tagertagzeaa4" class="step-link">
+                                <div class="step-image-container" style="border:1px solid red !important;">
+                                    <img src="wwwroot/images2/5.png"
+                                         class="step-img">
+                                    <span class="step-index">6</span>
+                                </div>
+                                <div class="step-content">
+                                    <p>الخطوة السادسة</p>
+                                    <h3 class="step-title">موضوع تاجر التجزئة</h3>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- الخطوة 7 - الآن في اليمين -->
+                        <div class="step-circle" style="--angle: 180deg">
+                            <a href="/Identity/Exams/posttest" class="step-link">
+                                <div class="step-image-container" style="border:1px solid #1a237e !important;">
+                                    <img src="wwwroot/images2/2.png"
+                                         class="step-img">
+                                    <span class="step-index">7</span>
+                                </div>
+                                <div class="step-content">
+                                    <p>الخطوة السابعة</p>
+                                    <h3 class="step-title">اختبار المواقف (البعدي)</h3>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- الخطوة 8 - الآن في أعلى اليمين -->
+                        <div class="step-circle" style="--angle: 225deg">
+                            <a href="/Identity/Exams/post3baa" class="step-link">
+                                <div class="step-image-container" style="border:5px solid lightgreen !important;">
+                                    <img src="wwwroot/images2/4.png"
+                                         class="step-img">
+                                    <span class="step-index">8</span>
+                                </div>
+                                <div class="step-content">
+                                    <p>الخطوة الثامنة</p>
+                                    <h3 class="step-title">مقياس العبء المعرفي</h3>
+                                </div>
+                            </a>
+                        </div>
+
+
+                        <!-- خطوط التوصيل من المركز -->
+                        <div class="connection-lines">
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم كارت الطالب -->
+            <!-- مسافة فارغة -->
+            <div class="page-container">
+                <div class="decorative-elements">
+                    <div class="decor"> </div>
+                    <div class="decor"> </div>
+                    <div class="decor"> </div>
+                </div>
+
+                <div class="student-card">
+                    <div class="card-header">
+                        <div class="graduation-icon">
+                            <i class="fas fa-graduation-cap"> </i>
+                        </div>
+                        <h1 class="card-title">عزيزي الطالب</h1>
+                        <p class="card-subtitle"></p>
+                    </div>
+
+                    <div class="message-box">
+                        <p class="message-text">
+                            النجاح هو مجموع الجهود الصغيرة التي تحاول بها كل يوم تنمية ذاتك وأدائك المهاري بمختلف المجالات، استمر بخطوات هذا البرنامج، لتتمكن من إتقان أهم مهارات أعمال الوساطة التجارية، التي ستفيدك حقا حاليا وبمستقبلك في مجال أعمال الوساطة التجارية.
+                        </p>
+                    </div>
+                    <p class="card-footer mt-1" style="direction:rtl;">إنتقل للشاشة التالية (مقياس الأسلوب المعرفي) لاستطلاع بعض أرائك، بالنقر على الزر التالي:</p>
+
+                    <a href="/Identity/Exams/mokhaterhazer" class="next-link" style="z-index:2;">
+                        <i class="fas fa-arrow-left" style="z-index:2;"> </i>
+                        إنتقل إلى <br />مقياس الأسلوب المعرفي
+                    </a>
+
+                </div>
+            </div>
+
+            <br />
+            <!-- قسم دليل المعلم -->
+            <div class="guide-section">
+                <a href="https://drive.google.com/uc?export=download&id=1rfnEDVid1LvXWN7IHhTE8quxbNDX-2XT"
+                   class="guide-btn"
+                   download="دليل-المعلم.pdf">
+                    <i class="fas fa-download mr-3"></i>
+                    <span class="guide-btn-text" style="margin-left:7px !important;">دليل المعلم</span>
+                </a>
+            </div>
+            <br />
+            <!-- قسم دليل الطالب -->
+            <div class="guide-section">
+                <a href="https://drive.google.com/uc?export=download&id=1XWA7q9fdYlypFtq0F-VSwJhyqAFt0eKH"
+                   class="guide-btn"
+                   download="دليل-الطالب-المصور.pdf">
+                    <i class="fas fa-download mr-3"></i>
+                    <span class="guide-btn-text" style="margin-left:7px !important;">دليل الطالب المصور</span>
+                </a>
+            </div>
+
+            <br /><br />
+            <!-- مسافة فارغة -->
+            <div class="spacing"></div>
+        </div>
+    </div>
+    <div class="spacing2">
+    </div>
+
+    <script>
+        // إضافة تأثيرات تفاعلية للانفوجرافيك
+        document.addEventListener('DOMContentLoaded', function() {
+            const stages = document.querySelectorAll('.stage');
+
+            // إضافة تأثير عند التمرير
+            const observerOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // تطبيق تأثيرات الظهور على المراحل
+            stages.forEach(stage => {
+                stage.style.opacity = '0';
+                stage.style.transform = 'translateY(30px)';
+                stage.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(stage);
+            });
+
+
+            // تأثير عند النقر على السهم للتمرير لأسفل
+            const arrowDown = document.querySelector('.arrow-down');
+            arrowDown.addEventListener('click', function() {
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: 'smooth'
+                });
+            });
+
+            // إضافة تأثيرات تفاعلية للخطوات
+            const steps = document.querySelectorAll('.step');
+            steps.forEach(step => {
+                step.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(-5px)';
+                    this.style.transition = 'transform 0.3s ease';
+                });
+
+                step.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0)';
+                });
+            });
+        });
+    </script>
+    <script>
+        // تحويل جميع الأرقام الإنجليزية إلى عربية تلقائياً
+        document.addEventListener('DOMContentLoaded', function() {
+            const arabicNumbers = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+
+            document.querySelectorAll('.stage-number').forEach(element => {
+                let text = element.textContent;
+                // تحويل كل رقم إنجليزي إلى عربي
+                text = text.replace(/[0-9]/g, function(match) {
+                    return arabicNumbers[parseInt(match)];
+                });
+                element.textContent = text;
+            });
+        });
+    </script>
+
+    <script>
+        // تأكيد أن الكارت في المنتصف تماماً
+        document.addEventListener('DOMContentLoaded', function() {
+                    const card = document.querySelector('.student-card');
+                    const pageContainer = document.querySelector('.page-container');
+
+                    // التأكد من أن الحاوية تملأ الشاشة بالكامل
+                    pageContainer.style.minHeight = '100vh';
+
+                    // تأثير ظهور الكارت
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(30px) scale(0.98)';
+
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) scale(1)';
+                    }, 300);
+
+                    // تغيير الرسالة عند النقر على الكارت (اختياري)
+                    const messages = [
+                        "اهلا بك عزيزي الطالب في برنامج مهارات أعمال الوساطة التجارية.",
+                    ];
+
+                    let currentMessageIndex = 0;
+
+                    card.addEventListener('click', function(e) {
+                        const link = document.querySelector('.next-link');
+                        if(e.target !== link && !link.contains(e.target)) {
+                            currentMessageIndex = (currentMessageIndex + 1) % messages.length;
+
+                            // تأثير تغيير النص
+                            const messageText = document.querySelector('.message-text');
+                            messageText.style.opacity = '0.3';
+                            messageText.style.transform = 'translateY(10px)';
+
+                            setTimeout(() => {
+                                // الحفاظ على الكلمات المميزة في الرسالة الجديدة
+                                let newMessage = messages[currentMessageIndex];
+                                newMessage = newMessage.replace(/challenge|effort|growth|knowledge|success|education/gi,
+                                    match => `<span class="keyword">${match}</span>`);
+
+                                messageText.innerHTML = newMessage;
+                                messageText.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                                messageText.style.opacity = '1';
+                                messageText.style.transform = 'translateY(0)';
+                            }, 300);
+                        }
+                    });
+
+                    // تأثير لون الزر عند التحويم
+                    const nextLink = document.querySelector('.next-link');
+                    nextLink.addEventListener('mouseenter', function() {
+                        this.style.background = 'linear-gradient(to right, #5a6268, #727b84)';
+                    });
+
+                    nextLink.addEventListener('mouseleave', function() {
+                        this.style.background = 'linear-gradient(to right, #6c757d, #868e96)';
+                    });
+                });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // إذا أصبح القسم مرئياً بنسبة 20% على الأقل
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // نوقف المراقبة بعد التفعيل لمرة واحدة لضمان الأداء
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.2 }); // يبدأ العمل عند ظهور 20% من القسم
+
+            // تحديد القسم المراد مراقبته
+            const videoSection = document.querySelector('.video-section');
+            if (videoSection) {
+                observer.observe(videoSection);
+            }
+        });
+    </script>
+
+</body>
+</html>

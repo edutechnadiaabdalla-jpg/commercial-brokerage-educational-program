@@ -1,0 +1,77 @@
+﻿@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* مسافة فارغة */
+.spacing {
+    height: 50px;
+}
+
+/* تعديلات الشاشات الصغيرة - Infographic Mobile Fix */
+@media (max-width: 768px) {
+    /* إخفاء الخط العمودي */
+    .timeline-line {
+        /*display: none;*/
+    }
+
+    .stage {
+        justify-content: center !important;
+        margin-bottom: 60px;
+        width: 100%;
+        position: relative;
+        /* إضافة مساحة علوية للمرحلة بالكامل ليعطي مجالاً للرقم الطائر */
+        padding-top: 40px;
+    }
+
+    .stage-content {
+        width: 100% !important;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 25px 20px 20px 20px;
+        position: relative;
+        border: 1px solid #eee; /* اختياري: لتحديد الحواف بوضوح */
+    }
+
+    .stage-number {
+        /* رفع الرقم أكثر لخلق المسافة المطلوبة */
+        top: -75px !important;
+        right: 50% !important;
+        left: auto !important;
+        transform: translateX(50%) !important;
+        position: absolute;
+        z-index: 10;
+        /* إضافة ظل ليبرز الرقم كأنه طائر فوق المستطيل */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* لضمان عدم تداخل المحتوى مع المسافة الجديدة */
+    .stage-title {
+        margin-top: 10px;
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 10px;
+    }
+
+    .main-title h1 {
+        font-family: Arial;
+        font: bold;
+        font-size: 1.5rem;
+    }
+
+
+    .main-title h2 {
+        font-family: Arial;
+        font: bold;
+        font-size: 1.3rem;
+    }
+}
